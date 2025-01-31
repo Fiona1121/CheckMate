@@ -14,6 +14,7 @@ type Props = {
   index: number;
   buttonLabel: string;
   buttonEndIcon: React.ReactNode;
+  buttonOnPress: () => void;
 };
 
 const SPRING_CONFIG = {
@@ -31,6 +32,7 @@ function FloatingActionButton({
   index,
   buttonLabel,
   buttonEndIcon,
+  buttonOnPress,
 }: Props) {
   const [isPressed, setPressed] = useState(false);
 
@@ -59,6 +61,7 @@ function FloatingActionButton({
 
   return (
     <AnimatedPressable
+      onPress={buttonOnPress}
       onPressIn={() => setPressed(true)}
       onPressOut={() => setPressed(false)}
       style={[
@@ -91,7 +94,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     gap: 4,
-    zIndex: -1,
+    zIndex: -2,
     paddingHorizontal: 16,
     paddingVertical: 16,
   },

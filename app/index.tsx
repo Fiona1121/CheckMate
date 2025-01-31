@@ -6,27 +6,22 @@ import {
   PlusIcon,
 } from "@/components/Icons";
 import { globalStyles } from "@/themes/globalStyles";
-import { BlurView } from "expo-blur";
 import { useState } from "react";
-import { Pressable, StyleSheet } from "react-native";
+import { Alert, Pressable, StyleSheet } from "react-native";
 import Animated, {
   interpolate,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
-import {
-  Button,
-  Image,
-  Modal,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native-ui-lib";
+import { Image, View } from "react-native-ui-lib";
+import * as ImagePicker from "expo-image-picker";
+import { useRouter } from "expo-router";
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export default function HomeScreen() {
+  const router = useRouter();
   const [isDropdownVisible, setDropdownVisible] = useState(false);
 
   const isExpanded = useSharedValue(false);
@@ -37,26 +32,67 @@ export default function HomeScreen() {
   };
 
   const plusIconStyle = useAnimatedStyle(() => {
-    const moveValue = interpolate(Number(isExpanded.value), [0, 1], [0, 2]);
-    const translateValue = withTiming(moveValue);
     const rotateValue = isExpanded.value ? "45deg" : "0deg";
 
     return {
-      transform: [
-        { translateX: translateValue },
-        { rotate: withTiming(rotateValue) },
-      ],
+      transform: [{ rotate: withTiming(rotateValue) }],
     };
   });
 
+  const handleTakePhoto = async () => {
+    setDropdownVisible(!isDropdownVisible);
+    isExpanded.value = !isExpanded.value;
+    const { status } = await ImagePicker.requestCameraPermissionsAsync();
+    if (status !== "granted") {
+      Alert.alert("Permission Denied", "We need camera access to take photos.");
+      return;
+    }
+
+    let result = await ImagePicker.launchCameraAsync({
+      mediaTypes: ["images"],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      console.log(result);
+      router.push({
+        pathname: "/analyze",
+        params: { imageUri: result.assets[0].uri },
+      });
+    }
+  };
+
+  const handlePickFromGallery = async () => {
+    setDropdownVisible(!isDropdownVisible);
+    isExpanded.value = !isExpanded.value;
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (status !== "granted") {
+      Alert.alert(
+        "Permission Denied",
+        "We need gallery access to pick images."
+      );
+      return;
+    }
+
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ["images"],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      console.log(result);
+      router.push({
+        pathname: "/analyze",
+        params: { imageUri: result.assets[0].uri },
+      });
+    }
+  };
+
   return (
-    <View style={styles.container}>
+    <View style={globalStyles.container}>
       {/* Overlay */}
       {isDropdownVisible && (
-        <Pressable
-          style={globalStyles.overlay}
-          onPress={handlePress} // Close dropdown when overlay is tapped
-        />
+        <Pressable style={globalStyles.overlay} onPress={handlePress} />
       )}
       <View style={styles.imageContainer}>
         {/* Image */}
@@ -72,27 +108,30 @@ export default function HomeScreen() {
             onPress={handlePress}
             style={[styles.floatingButton, globalStyles.shadow]}
           >
-            <Animated.Text style={[plusIconStyle, styles.floatingButtonText]}>
-              +
-            </Animated.Text>
+            <Animated.View style={[plusIconStyle]}>
+              <PlusIcon />
+            </Animated.View>
           </AnimatedPressable>
           <FloatingActionButton
             isExpanded={isExpanded}
             index={3}
             buttonLabel="Take a New Photo"
             buttonEndIcon={<CameraAddIcon />}
+            buttonOnPress={handleTakePhoto}
           />
           <FloatingActionButton
             isExpanded={isExpanded}
             index={2}
             buttonLabel="Pick from Gallery"
             buttonEndIcon={<PhotoIcon />}
+            buttonOnPress={handlePickFromGallery}
           />
           <FloatingActionButton
             isExpanded={isExpanded}
             index={1}
             buttonLabel="Enter Manually"
             buttonEndIcon={<PenIcon />}
+            buttonOnPress={handlePickFromGallery}
           />
         </View>
       </View>
@@ -101,13 +140,6 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingHorizontal: 32,
-    position: "relative",
-  },
   imageContainer: {
     position: "relative", // Enables the button to position relative to this container
     width: "100%",
@@ -118,21 +150,15 @@ const styles = StyleSheet.create({
     height: 560,
   },
   floatingButton: {
-    padding: 0,
     width: 52,
     height: 52,
     backgroundColor: "#FB8232",
     borderRadius: 30,
     borderWidth: 1.5,
+    display: "flex",
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-  },
-  floatingButtonText: {
-    color: "#000",
-    fontSize: 30,
-    fontWeight: "semibold",
-    textAlign: "center",
   },
   buttonContainer: {
     width: 240,
