@@ -3479,6 +3479,13 @@ expo-file-system@~18.0.7:
   dependencies:
     web-streams-polyfill "^3.3.2"
 
+expo-file-system@~18.0.8:
+  version "18.0.8"
+  resolved "https://registry.yarnpkg.com/expo-file-system/-/expo-file-system-18.0.8.tgz#20a72fbb914ed7f96963d37e38ff80cb42311a84"
+  integrity sha512-hU4N6Jfr08b5/mXH3A9JDpmmHJrH3rM8Xu46ZxEzqGTmyk+FW9raCPP93uyVl1LIxi8+21/p44ih/SHIwUY4cA==
+  dependencies:
+    web-streams-polyfill "^3.3.2"
+
 expo-font@~13.0.3:
   version "13.0.3"
   resolved "https://registry.yarnpkg.com/expo-font/-/expo-font-13.0.3.tgz#7660ec4e3f5df0782bfa563fea7170c7ce2865ab"

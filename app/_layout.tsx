@@ -27,11 +27,14 @@ export default function RootLayout() {
     <Stack>
       <Stack.Screen
         name="index"
-        options={{ title: "Home", headerShown: false }}
+        options={{ title: "Home", headerShown: false, gestureEnabled: false }}
       />
       <Stack.Screen
         name="analyze"
-        options={{ title: "Analyze", headerShown: false }}
+        options={{
+          title: "Analyze",
+          headerShown: false,
+        }}
       />
     </Stack>
   );

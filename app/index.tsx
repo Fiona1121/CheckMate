@@ -9,7 +9,6 @@ import { globalStyles } from "@/themes/globalStyles";
 import { useState } from "react";
 import { Alert, Pressable, StyleSheet } from "react-native";
 import Animated, {
-  interpolate,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
@@ -54,7 +53,6 @@ export default function HomeScreen() {
     });
 
     if (!result.canceled) {
-      console.log(result);
       router.push({
         pathname: "/analyze",
         params: { imageUri: result.assets[0].uri },
@@ -80,7 +78,6 @@ export default function HomeScreen() {
     });
 
     if (!result.canceled) {
-      console.log(result);
       router.push({
         pathname: "/analyze",
         params: { imageUri: result.assets[0].uri },
@@ -101,11 +98,11 @@ export default function HomeScreen() {
           style={styles.image}
           resizeMode="contain"
         />
-
         {/* Dropdown */}
         <View style={styles.buttonContainer}>
           <AnimatedPressable
             onPress={handlePress}
+            hitSlop={15}
             style={[styles.floatingButton, globalStyles.shadow]}
           >
             <Animated.View style={[plusIconStyle]}>
@@ -143,6 +140,7 @@ const styles = StyleSheet.create({
   imageContainer: {
     position: "relative", // Enables the button to position relative to this container
     width: "100%",
+    maxWidth: 320,
     alignItems: "center",
   },
   image: {
@@ -156,9 +154,9 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     borderWidth: 1.5,
     display: "flex",
+    zIndex: 400,
     justifyContent: "center",
     alignItems: "center",
-    position: "absolute",
   },
   buttonContainer: {
     width: 240,
@@ -166,7 +164,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-end",
-    bottom: 48,
+    bottom: 4,
     right: 4,
     zIndex: 300,
   },
