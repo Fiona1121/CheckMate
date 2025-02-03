@@ -1,50 +1,159 @@
-# Welcome to your Expo app 👋
+# CheckMate 📸💰
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+[![React Native](https://img.shields.io/badge/React%20Native-0.73-blue)](https://reactnative.dev/)
+[![Expo](https://img.shields.io/badge/Expo-50.0.0-blue)](https://expo.dev/)
 
-## Get started
+> **CheckMate** helps you effortlessly split bills from **receipt images**. Simply take a picture, and AI will extract the details, calculate totals, and let you share the costs with friends!
 
-1. Install dependencies
+<!-- --- -->
 
-   ```bash
-   npm install
-   ```
+<!-- ## **📸 Demo** -->
+<!-- Add a gif or image showcasing the app -->
+<!-- \![CheckMate Demo](https://your-image-url.gif) -->
 
-2. Start the app
+---
 
-   ```bash
-    npx expo start
-   ```
+## **🚀 Features**
 
-In the output, you'll find options to open the app in a
+✅ **Snap a Receipt** – Take a photo and extract the bill details automatically.  
+✅ **Gallery Upload** – Pick a receipt from your photo library.  
+✅ **AI-Powered Extraction** – Uses **GPT-4o Vision** for accurate text recognition.  
+✅ **Auto Tax & Tip Calculation** – Splits your bill fairly.  
+✅ **Split Options** – Even split or assign items manually.  
+✅ **Secure & Private** – No data is stored, only processed locally and via OpenAI.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## **📲 Installation**
 
-## Get a fresh project
+### **1️⃣ Clone the Repo**
 
-When you're ready, run:
-
-```bash
-npm run reset-project
+```sh
+git clone https://github.com/your-username/CheckMate.git
+cd CheckMate
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### **2️⃣ Install Dependencies**
 
-## Learn more
+```sh
+npm install
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+or with Yarn:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```sh
+yarn install
+```
 
-## Join the community
+### **3️⃣ Set Up Environment Variables**
 
-Join our community of developers creating universal apps.
+Create a `.env` file in the root directory and add:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```ini
+EXPO_PUBLIC_OPENAI_API_KEY=your_openai_api_key
+```
+
+> 🔥 **DO NOT** share your API key publicly! Use a `.gitignore` file to exclude `.env` from commits.
+
+### **4️⃣ Start the App**
+
+For iOS:
+
+```sh
+npx expo start --ios
+```
+
+For Android:
+
+```sh
+npx expo start --android
+```
+
+For Web:
+
+```sh
+npx expo start
+```
+
+---
+
+## **🛠️ Tech Stack**
+
+- **Frontend:** React Native (Expo, TypeScript)
+- **State Management:** React Hooks
+- **Navigation:** Expo Router
+- **Image Processing:** `expo-image-picker`, `expo-image-manipulator`
+- **AI Processing:** OpenAI GPT-4o Vision API
+- **UI Components:** React Native UI Kit, react-native-magnus
+
+---
+
+## **🧠 AI Receipt Extraction**
+
+We use **OpenAI's GPT-4o Vision API** to analyze receipt images and extract structured data.
+
+### **AI API Request Example**
+
+```json
+{
+  "model": "gpt-4o",
+  "messages": [
+    {
+      "role": "system",
+      "content": "Extract structured receipt details. Return JSON only."
+    },
+    {
+      "role": "user",
+      "content": [
+        { "type": "text", "text": "Extract receipt details from this image." },
+        {
+          "type": "image_url",
+          "image_url": { "url": "data:image/jpeg;base64,..." }
+        }
+      ]
+    }
+  ],
+  "max_tokens": 500
+}
+```
+
+### **Expected AI Response**
+
+```json
+{
+  "store": { "name": "Starbucks", "address": "123 Main St", "phone": null },
+  "transaction": {
+    "date": "2024-02-01",
+    "time": "14:30",
+    "paymentMethod": "Visa"
+  },
+  "items": [{ "name": "Latte", "price": 5.5, "quantity": 1, "discount": 0.5 }],
+  "subtotal": 5.0,
+  "tax": 0.4,
+  "total": 5.4,
+  "currency": "USD"
+}
+```
+
+---
+
+## **🚧 Roadmap**
+
+- [x] **Capture Receipts via Camera**
+- [x] **Extract Items & Costs Using AI**
+- [ ] **Evenly Split Bills**
+- [ ] **Custom Item Selection for Each Person**
+- [ ] **Payment Integration (Zelle, Venmo)**
+- [ ] **Dark Mode Support**
+- [ ] **Multi-Language Support**
+
+---
+
+## **🌟 Acknowledgments**
+
+Big thanks to:
+
+- [React Native](https://reactnative.dev/)
+- [Expo](https://expo.dev/)
+- [OpenAI](https://platform.openai.com/)
+- [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
