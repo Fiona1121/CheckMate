@@ -73,6 +73,9 @@ function FloatingActionButton({
             ? colors.primary.default
             : colors.neutral.white,
         },
+        {
+          zIndex: isExpanded.value ? 500 : 500,
+        },
       ]}
     >
       <Animated.Text style={styles.content}>{buttonLabel}</Animated.Text>
@@ -85,10 +88,12 @@ const styles = StyleSheet.create({
   button: {
     width: "100%",
     height: 54,
-    backgroundColor: "#fff",
-    position: "absolute",
     borderRadius: 8,
     borderWidth: 1.5,
+    borderColor: colors.neutral.black,
+    backgroundColor: colors.neutral.white,
+    position: "absolute",
+    overflow: "hidden",
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",

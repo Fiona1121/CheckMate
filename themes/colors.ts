@@ -7,8 +7,8 @@ const colors = {
   neutral: {
     white: "#FFFFFF",
     black: "#000000",
-    grayLight: "#F5F5F5",
-    grayDark: "#333333",
+    grayLight: "#E8ECF0",
+    grayDark: "#A1A1A1",
   },
 };
 

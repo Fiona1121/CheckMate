@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     borderWidth: 1.5,
     display: "flex",
-    zIndex: 400,
+    zIndex: 600,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -166,6 +166,6 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     bottom: 4,
     right: 4,
-    zIndex: 300,
+    zIndex: 500,
   },
 });

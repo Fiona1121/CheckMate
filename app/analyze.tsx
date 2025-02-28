@@ -33,7 +33,7 @@ function AnalyzeScreen({}: Props) {
           }
           return prevProgress;
         });
-      }, 1000);
+      }, 500);
 
       try {
         const base64Image = await convertImageToBase64(imageUri);
@@ -109,8 +109,12 @@ function AnalyzeScreen({}: Props) {
                 return;
               }
 
-              // Set parsed receipt data
-              setReceiptData(parsedData);
+              setProgress(100);
+              setLoading(false);
+              router.push({
+                pathname: "/stepper",
+                params: { receiptData: JSON.stringify(parsedData) },
+              });
             } catch (error) {
               console.error("Error parsing JSON:", error);
               setReceiptData({ error: "Invalid response format" });
@@ -122,7 +126,12 @@ function AnalyzeScreen({}: Props) {
               );
             }
           } else if (typeof extractedData === "object") {
-            setReceiptData(extractedData);
+            setProgress(100);
+            setLoading(false);
+            router.push({
+              pathname: "/stepper",
+              params: { receiptData: JSON.stringify(extractedData) },
+            });
           } else {
             console.error("Unknown response format:", extractedData);
             setReceiptData({ error: "Invalid response format" });

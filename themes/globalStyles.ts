@@ -23,8 +23,35 @@ export const globalStyles = StyleSheet.create({
     justifyContent: "center",
     paddingHorizontal: 32,
     position: "relative",
+    backgroundColor: colors.neutral.white,
   },
   bgPrimary: {
     backgroundColor: colors.primary.default,
+  },
+  buttonPrimary: {
+    backgroundColor: colors.primary.default,
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 999,
+  },
+  buttonSecondary: {
+    backgroundColor: colors.neutral.grayDark,
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 999,
+  },
+  buttonText: {
+    color: colors.neutral.white,
+    fontFamily: "WixMadeforText-Bold",
+    fontSize: 16,
+    fontWeight: "bold",
+    lineHeight: 24,
+    textAlign: "center",
+  },
+  normalText: {
+    fontFamily: "AvenirNext-Regular",
+    fontSize: 16,
+    lineHeight: 24,
+    color: colors.neutral.black,
   },
 });

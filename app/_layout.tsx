@@ -11,6 +11,8 @@ export default function RootLayout() {
   const [loaded] = useFonts({
     WixMadeforText: require("../assets/fonts/WixMadeforText-VariableFont_wght.ttf"),
     Gaegu: require("../assets/fonts/Gaegu-Regular.ttf"),
+    "AvenirNext-Regular": require("../assets/fonts/AvenirNextLTPro-Regular.otf"),
+    "AvenirNext-Bold": require("../assets/fonts/AvenirNextLTPro-Bold.otf"),
   });
 
   useEffect(() => {
@@ -33,6 +35,13 @@ export default function RootLayout() {
         name="analyze"
         options={{
           title: "Analyze",
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="stepper"
+        options={{
+          title: "Stepper",
           headerShown: false,
         }}
       />

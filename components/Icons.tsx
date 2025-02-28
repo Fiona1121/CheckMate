@@ -1,4 +1,4 @@
-import Svg, { Path, SvgProps } from "react-native-svg";
+import Svg, { Defs, G, Mask, Path, Rect, SvgProps } from "react-native-svg";
 
 export const PlusIcon = (props: SvgProps) => {
   return (
@@ -50,6 +50,106 @@ export const PenIcon = (props: SvgProps) => {
         fill="#000"
         d="m10.79 3.96 4.75 4.75L5.224 19.028l-4.235.467a.89.89 0 0 1-.983-.983l.47-4.239L10.79 3.96Zm7.688-.707-2.23-2.231a1.782 1.782 0 0 0-2.52 0L11.628 3.12l4.75 4.751 2.1-2.098a1.782 1.782 0 0 0 0-2.52Z"
       />
+    </Svg>
+  );
+};
+
+export const CounterMinusIcon = (props: SvgProps) => {
+  return (
+    <Svg width={33} height={32} fill="none" {...props}>
+      <Path
+        fill="#FB8232"
+        fillRule="evenodd"
+        d="M16.5 31c8.284 0 15-6.716 15-15 0-8.284-6.716-15-15-15-8.284 0-15 6.716-15 15 0 8.284 6.716 15 15 15Zm0 1c-8.837 0-16-7.163-16-16s7.163-16 16-16 16 7.163 16 16-7.163 16-16 16Zm4.8-17c.663 0 1.2.448 1.2 1s-.537 1-1.2 1h-9.6c-.663 0-1.2-.448-1.2-1s.537-1 1.2-1h9.6Z"
+        clipRule="evenodd"
+      />
+    </Svg>
+  );
+};
+
+export const CounterPlusIcon = (props: SvgProps) => {
+  return (
+    <Svg width={33} height={32} fill="none" {...props}>
+      <Path
+        fill="#FB8232"
+        fillRule="evenodd"
+        d="M16.5 32c-8.837 0-16-7.163-16-16s7.163-16 16-16 16 7.163 16 16-7.163 16-16 16Zm0-1c8.284 0 15-6.716 15-15 0-8.284-6.716-15-15-15-8.284 0-15 6.716-15 15 0 8.284 6.716 15 15 15Z"
+        clipRule="evenodd"
+      />
+      <Path
+        fill="#FB8232"
+        d="M16.5 10c-.552 0-1 .537-1 1.2V15h-3.8c-.663 0-1.2.448-1.2 1s.537 1 1.2 1h3.8v3.8c0 .663.448 1.2 1 1.2s1-.537 1-1.2V17h3.8c.663 0 1.2-.448 1.2-1s-.537-1-1.2-1h-3.8v-3.8c0-.663-.448-1.2-1-1.2Z"
+      />
+    </Svg>
+  );
+};
+
+export const ArrowLeftIcon = (props: SvgProps) => {
+  return (
+    <Svg width={24} height={24} fill="none" {...props}>
+      <Path
+        stroke="#292D32"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeMiterlimit={10}
+        strokeWidth={1.5}
+        d="M15 19.92 8.48 13.4c-.77-.77-.77-2.03 0-2.8L15 4.08"
+      />
+    </Svg>
+  );
+};
+
+export const OutlineAddIcon = (props: SvgProps) => {
+  return (
+    <Svg width={32} height={31} fill="none" {...props}>
+      <Rect
+        width={30}
+        height={30}
+        x={1.411}
+        y={0.5}
+        stroke="#3F3F3F"
+        rx={5.5}
+      />
+      <Path
+        stroke="#3F3F3F"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+        d="M8.66 15.5h15.5M16.41 23.25V7.75"
+      />
+    </Svg>
+  );
+};
+
+export const OutlineRemoveIcon = (props: SvgProps) => {
+  return (
+    <Svg width={32} height={32} fill="none" {...props}>
+      <Mask
+        id="a"
+        width={32}
+        height={32}
+        x={0}
+        y={0}
+        maskUnits="userSpaceOnUse"
+        style={{
+          maskType: "alpha",
+        }}
+      >
+        <Path fill="#D9D9D9" d="M.822.5h31v31h-31z" />
+      </Mask>
+      <G mask="url(#a)">
+        <Rect width={31} height={31} x={0.822} y={0.5} fill="#FB8232" rx={6} />
+        <G
+          stroke="#F8F8F8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          filter="url(#b)"
+        >
+          <Path d="m10.842 10.52 10.96 10.96M10.842 21.48l10.96-10.96" />
+        </G>
+      </G>
+      <Defs></Defs>
     </Svg>
   );
 };
