@@ -111,25 +111,25 @@ export default function HomeScreen() {
           </AnimatedPressable>
           <FloatingActionButton
             isExpanded={isExpanded}
-            index={3}
+            index={2}
             buttonLabel="Take a New Photo"
             buttonEndIcon={<CameraAddIcon />}
             buttonOnPress={handleTakePhoto}
           />
           <FloatingActionButton
             isExpanded={isExpanded}
-            index={2}
+            index={1}
             buttonLabel="Pick from Gallery"
             buttonEndIcon={<PhotoIcon />}
             buttonOnPress={handlePickFromGallery}
           />
-          <FloatingActionButton
+          {/* <FloatingActionButton
             isExpanded={isExpanded}
             index={1}
             buttonLabel="Enter Manually"
             buttonEndIcon={<PenIcon />}
             buttonOnPress={handlePickFromGallery}
-          />
+          /> */}
         </View>
       </View>
     </View>

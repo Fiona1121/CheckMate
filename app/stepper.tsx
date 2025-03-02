@@ -18,7 +18,6 @@ const StepperScreen = () => {
     ? params.receiptData[0]
     : params.receiptData;
   const parsedReceipt = receiptData ? JSON.parse(receiptData) : null;
-  const [receipt, setReceipt] = useState(parsedReceipt);
 
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 3;
@@ -48,15 +47,15 @@ const StepperScreen = () => {
   );
   const [edit, setEdit] = useState(false);
 
-  useEffect(() => {
-    console.log("Loaded receipt data:", parsedReceipt);
-    console.log("Parsed items:", items);
-    console.log(parsedReceipt?.serviceFee);
-    console.log(parsedReceipt?.deliveryFee);
-    console.log(parsedReceipt?.discount);
-    console.log(parsedReceipt?.tax);
-    console.log(parsedReceipt?.tip);
-  }, []);
+  // useEffect(() => {
+  //   console.log("Loaded receipt data:", parsedReceipt);
+  //   console.log("Parsed items:", items);
+  //   console.log(parsedReceipt?.serviceFee);
+  //   console.log(parsedReceipt?.deliveryFee);
+  //   console.log(parsedReceipt?.discount);
+  //   console.log(parsedReceipt?.tax);
+  //   console.log(parsedReceipt?.tip);
+  // }, []);
 
   const goNext = () => {
     if (currentStep < totalSteps) setCurrentStep(currentStep + 1);
@@ -244,15 +243,8 @@ const StepperScreen = () => {
                 keyboardType="decimal-pad"
                 containerStyle={styles.textfield}
                 centered
-                leadingAccessory={
-                  <Text
-                    style={{
-                      fontSize: 16,
-                    }}
-                  >
-                    $
-                  </Text>
-                }
+                leadingAccessory={<Text>$</Text>}
+                returnKeyType="done"
               />
             </View>
             <View style={styles.additionalCostContainer}>
@@ -271,15 +263,8 @@ const StepperScreen = () => {
                 keyboardType="decimal-pad"
                 containerStyle={styles.textfield}
                 centered
-                leadingAccessory={
-                  <Text
-                    style={{
-                      fontSize: 16,
-                    }}
-                  >
-                    $
-                  </Text>
-                }
+                leadingAccessory={<Text>$</Text>}
+                returnKeyType="done"
               />
             </View>
             <View style={styles.additionalCostContainer}>
@@ -298,15 +283,8 @@ const StepperScreen = () => {
                 keyboardType="decimal-pad"
                 containerStyle={styles.textfield}
                 centered
-                leadingAccessory={
-                  <Text
-                    style={{
-                      fontSize: 16,
-                    }}
-                  >
-                    -$
-                  </Text>
-                }
+                leadingAccessory={<Text>-$</Text>}
+                returnKeyType="done"
               />
             </View>
             <View style={styles.additionalCostContainer}>
@@ -325,15 +303,8 @@ const StepperScreen = () => {
                 keyboardType="decimal-pad"
                 containerStyle={styles.textfield}
                 centered
-                leadingAccessory={
-                  <Text
-                    style={{
-                      fontSize: 16,
-                    }}
-                  >
-                    $
-                  </Text>
-                }
+                leadingAccessory={<Text>$</Text>}
+                returnKeyType="done"
               />
             </View>
             <View style={styles.additionalCostContainer}>
@@ -352,15 +323,8 @@ const StepperScreen = () => {
                 keyboardType="decimal-pad"
                 containerStyle={styles.textfield}
                 centered
-                leadingAccessory={
-                  <Text
-                    style={{
-                      fontSize: 16,
-                    }}
-                  >
-                    $
-                  </Text>
-                }
+                leadingAccessory={<Text>$</Text>}
+                returnKeyType="done"
               />
             </View>
             <View style={styles.actionContainer}>
@@ -405,7 +369,16 @@ const StepperScreen = () => {
                   router.push({
                     pathname: "/result",
                     params: {
-                      items,
+                      receiptData: parsedReceipt,
+                      items: encodeURIComponent(
+                        JSON.stringify(
+                          items.filter((item: any) => item.selected)
+                        )
+                      ),
+                      total: items.reduce(
+                        (acc: number, item: any) => acc + item.price,
+                        0
+                      ),
                       peopleCount,
                       serviceFee: parseFloat(serviceFee),
                       deliveryFee: parseFloat(deliveryFee),
