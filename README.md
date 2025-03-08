@@ -11,7 +11,6 @@
 <!-- Add a gif or image showcasing the app -->
 <!-- \![CheckMate Demo](https://your-image-url.gif) -->
 
----
 
 ## **🚀 Features**
 
@@ -22,7 +21,6 @@
 ✅ **Split Options** – Even split or assign items manually.  
 ✅ **Secure & Private** – No data is stored, only processed locally and via OpenAI.
 
----
 
 ## **📲 Installation**
 
@@ -75,7 +73,6 @@ For Web:
 npx expo start
 ```
 
----
 
 ## **🛠️ Tech Stack**
 
@@ -86,7 +83,6 @@ npx expo start
 - **AI Processing:** OpenAI GPT-4o Vision API
 - **UI Components:** React Native UI Kit, react-native-magnus
 
----
 
 ## **🧠 AI Receipt Extraction**
 
@@ -135,7 +131,6 @@ We use **OpenAI's GPT-4o Vision API** to analyze receipt images and extract stru
 }
 ```
 
----
 
 ## **🚧 Roadmap**
 
@@ -147,7 +142,6 @@ We use **OpenAI's GPT-4o Vision API** to analyze receipt images and extract stru
 - [ ] **Dark Mode Support**
 - [ ] **Multi-Language Support**
 
----
 
 ## **🌟 Acknowledgments**
 
@@ -157,3 +151,6 @@ Big thanks to:
 - [Expo](https://expo.dev/)
 - [OpenAI](https://platform.openai.com/)
 - [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
+<a href="https://www.flaticon.com/free-stickers/playtime" title="playtime stickers">Playtime stickers created by Stickers - Flaticon</a>
+<a href="https://www.flaticon.com/free-stickers/couple" title="couple stickers">Couple stickers created by Stickers - Flaticon</a>
+<a href="https://www.flaticon.com/free-stickers/calculator" title="calculator stickers">Calculator stickers created by Stickers - Flaticon</a>
