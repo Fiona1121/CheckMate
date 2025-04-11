@@ -151,6 +151,7 @@ Big thanks to:
 - [Expo](https://expo.dev/)
 - [OpenAI](https://platform.openai.com/)
 - [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
+
 <a href="https://www.flaticon.com/free-stickers/playtime" title="playtime stickers">Playtime stickers created by Stickers - Flaticon</a>
 <a href="https://www.flaticon.com/free-stickers/couple" title="couple stickers">Couple stickers created by Stickers - Flaticon</a>
 <a href="https://www.flaticon.com/free-stickers/calculator" title="calculator stickers">Calculator stickers created by Stickers - Flaticon</a>
