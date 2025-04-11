@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "CheckMate",
+    "name": "CheckMate: Easy Check Splitter",
     "slug": "checkmate",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -12,7 +12,8 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.itzsyboo.checkmate",
       "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
+        "NSCameraUsageDescription": "CheckMate uses your camera to take photos of receipts so we can scan and split the bill for you.",
+        "NSPhotoLibraryUsageDescription": "CheckMate lets you choose receipt images from your photo library to automatically analyze and split your bill."
       }
     },
     "android": {
